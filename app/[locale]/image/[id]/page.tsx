@@ -6,14 +6,23 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { ImageData } from '@/lib/types';
+import { AgeVerificationModal } from '@/components/AgeVerificationModal';
+import { useAgeVerification } from '@/components/useAgeVerification';
 
 export default function ImageDetailPage() {
   const params = useParams();
   const router = useRouter();
   const t = useTranslations('image');
+  const tNsfw = useTranslations('nsfw');
   const [image, setImage] = useState<ImageData | null>(null);
   const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
+  const {
+    nsfwPreference,
+    showAgeModal,
+    confirmAge,
+    declineAge,
+  } = useAgeVerification({ requireVerification: Boolean(image?.isNSFW) });
 
   useEffect(() => {
     async function fetchImage() {
@@ -65,6 +74,29 @@ export default function ImageDetailPage() {
             {t('backToGallery')}
           </Button>
         </div>
+      </div>
+    );
+  }
+
+  if (image.isNSFW && !nsfwPreference.ageVerified) {
+    return (
+      <div className="min-h-screen bg-background">
+        <main className="container mx-auto px-4 py-16 max-w-3xl text-center">
+          <div className="text-5xl mb-4">🔞</div>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            {tNsfw('ageVerification')}
+          </h1>
+          <p className="text-gray-600">
+            {tNsfw('ageVerificationMessage')}
+          </p>
+        </main>
+
+        {showAgeModal && (
+          <AgeVerificationModal
+            onConfirm={confirmAge}
+            onDecline={declineAge}
+          />
+        )}
       </div>
     );
   }

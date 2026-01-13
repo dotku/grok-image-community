@@ -2,37 +2,25 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { ImageData, NSFWPreference } from '@/lib/types';
+import { ImageData } from '@/lib/types';
 import { ImageCard } from './ImageCard';
 import Link from 'next/link';
 import { Button } from './ui/Button';
 import { AgeVerificationModal } from './AgeVerificationModal';
+import { useAgeVerification } from './useAgeVerification';
 
 export function ImageGallery() {
   const [images, setImages] = useState<ImageData[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showAgeModal, setShowAgeModal] = useState(false);
-  const [nsfwPreference, setNsfwPreference] = useState<NSFWPreference>({
-    showNSFW: false,  // Default to blurred
-    ageVerified: false,
-  });
+  const {
+    nsfwPreference,
+    showAgeModal,
+    confirmAge,
+    declineAge,
+  } = useAgeVerification({ requireVerification: true });
   const t = useTranslations('gallery');
 
   useEffect(() => {
-    // Load NSFW preference from localStorage
-    const saved = localStorage.getItem('nsfwPreference');
-    if (saved) {
-      const pref = JSON.parse(saved);
-      setNsfwPreference(pref);
-      // Show age modal if not verified
-      if (!pref.ageVerified) {
-        setShowAgeModal(true);
-      }
-    } else {
-      // First time visitor - show age verification modal
-      setShowAgeModal(true);
-    }
-
     // Fetch images
     async function fetchImages() {
       try {
@@ -51,22 +39,6 @@ export function ImageGallery() {
 
     fetchImages();
   }, []);
-
-  const handleAgeConfirm = () => {
-    const newPref: NSFWPreference = {
-      showNSFW: true,
-      ageVerified: true,
-      verifiedAt: new Date().toISOString(),
-    };
-    setNsfwPreference(newPref);
-    localStorage.setItem('nsfwPreference', JSON.stringify(newPref));
-    setShowAgeModal(false);
-  };
-
-  const handleAgeDecline = () => {
-    // Redirect to a safe page or show message
-    window.location.href = 'https://www.google.com';
-  };
 
   const visibleImages = nsfwPreference.showNSFW
     ? images
@@ -122,8 +94,8 @@ export function ImageGallery() {
 
       {showAgeModal && (
         <AgeVerificationModal
-          onConfirm={handleAgeConfirm}
-          onDecline={handleAgeDecline}
+          onConfirm={confirmAge}
+          onDecline={declineAge}
         />
       )}
     </div>

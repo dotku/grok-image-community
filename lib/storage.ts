@@ -1,9 +1,11 @@
 import { put } from '@vercel/blob';
-import { promises as fs } from 'fs';
-import path from 'path';
+import Redis from 'ioredis';
 import { ImageData } from './types';
 
-const IMAGES_JSON_PATH = path.join(process.cwd(), 'data', 'images.json');
+const IMAGES_KEY = 'images';
+
+// Create Redis client
+const redis = new Redis(process.env.REDIS_URL || '');
 
 export async function saveImage(
   imageUrl: string,
@@ -24,11 +26,11 @@ export async function saveImage(
   // Read existing images
   const existingImages = await getImages();
 
-  // Add new image
-  existingImages.unshift(imageData); // Add to beginning
+  // Add new image to beginning
+  existingImages.unshift(imageData);
 
-  // Save to JSON file
-  await fs.writeFile(IMAGES_JSON_PATH, JSON.stringify(existingImages, null, 2));
+  // Save to Redis
+  await redis.set(IMAGES_KEY, JSON.stringify(existingImages));
 
   return imageData;
 }
@@ -44,10 +46,11 @@ export async function uploadImageToBlob(imageBuffer: Buffer, filename: string): 
 
 export async function getImages(): Promise<ImageData[]> {
   try {
-    const data = await fs.readFile(IMAGES_JSON_PATH, 'utf-8');
-    return JSON.parse(data);
+    const data = await redis.get(IMAGES_KEY);
+    if (!data) return [];
+    return JSON.parse(data) as ImageData[];
   } catch (error) {
-    // If file doesn't exist, return empty array
+    console.error('Error fetching images from Redis:', error);
     return [];
   }
 }
