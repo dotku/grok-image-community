@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ccbc2ad6-579a-4d94-a2a7-46c7a78dba81",
+    "prompt": "generate a NSFW image",
+    "imageUrl": "https://ynrnkmkfoz0lk1cg.public.blob.vercel-storage.com/1768275502400-9c85af7a-1711-40d6-ac97-d06f794bf9b5.png",
+    "isNSFW": true,
+    "createdAt": "2026-01-13T03:38:23.470Z",
+    "locale": "en",
+    "model": "lustify-v7"
+  },
+  {
+    "id": "0472b6c6-3cae-4435-95b2-775ec0c79638",
+    "prompt": "a nudy sexy girl",
+    "imageUrl": "https://ynrnkmkfoz0lk1cg.public.blob.vercel-storage.com/1768275236605-67b7a989-0c16-48f5-9d6d-0e32704f8ed1.png",
+    "isNSFW": true,
+    "createdAt": "2026-01-13T03:33:57.156Z",
+    "locale": "en",
+    "model": "lustify-v7"
+  },
+  {
+    "id": "35bb0ab4-ac41-4987-8b89-91143a6c5b9e",
+    "prompt": "nudy sexy girl",
+    "imageUrl": "https://ynrnkmkfoz0lk1cg.public.blob.vercel-storage.com/1768275134522-fca8c2b3-f8aa-42e3-94e1-eb5e7bbc8f1d.png",
+    "isNSFW": true,
+    "createdAt": "2026-01-13T03:32:15.482Z",
+    "locale": "en",
+    "model": "lustify-v7"
+  },
+  {
+    "id": "34057ac9-0ccf-4d44-8024-03cf03527252",
+    "prompt": "A majestic mountain landscape at sunset with a river flowing through the valley",
+    "imageUrl": "https://ynrnkmkfoz0lk1cg.public.blob.vercel-storage.com/1768275089796-f9b9bfba-2779-4c6b-95f0-635e2b414085.png",
+    "isNSFW": false,
+    "createdAt": "2026-01-13T03:31:30.751Z",
+    "locale": "en",
+    "model": "lustify-v7"
+  },
+  {
+    "id": "baa08800-1325-413c-9ee3-85e1b2175835",
+    "prompt": "A majestic mountain landscape at sunset with a river flowing through the valley",
+    "imageUrl": "https://ynrnkmkfoz0lk1cg.public.blob.vercel-storage.com/1768260617636-33971f56-40cf-4a0e-8718-c1276b68c1c3.png",
+    "isNSFW": false,
+    "createdAt": "2026-01-12T23:30:18.459Z",
+    "locale": "en",
+    "model": "aurora"
+  }
+]

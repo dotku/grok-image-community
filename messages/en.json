@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "title": "NSFW Images Generator - AI Art Community",
+    "description": "Generate and share AI art with unrestricted creative freedom"
+  },
+  "nav": {
+    "gallery": "Gallery",
+    "generate": "Generate",
+    "selectLanguage": "Select Language"
+  },
+  "header": {
+    "appName": "NSFW Images Generator",
+    "tagline": "Unrestricted AI Art"
+  },
+  "gallery": {
+    "title": "Community Gallery",
+    "noImages": "No images yet. Be the first to generate!",
+    "loading": "Loading images...",
+    "totalImages": "Total Images",
+    "showing": "Showing",
+    "hidden": "hidden"
+  },
+  "generate": {
+    "title": "Generate Image",
+    "promptLabel": "Describe your image",
+    "promptPlaceholder": "A majestic mountain landscape at sunset with a river flowing through the valley...",
+    "generateButton": "Generate",
+    "generating": "Generating...",
+    "characterCount": "characters",
+    "minLength": "Minimum 10 characters required",
+    "maxLength": "Maximum 1000 characters",
+    "examplesTitle": "Example Prompts",
+    "error": "Failed to generate image. Please try again."
+  },
+  "nsfw": {
+    "toggle": "Show NSFW",
+    "verifyAge": "Age Verification Required",
+    "confirmOver18": "You must be 18 or older to view NSFW content. Are you 18+?",
+    "yes": "Yes, I'm 18+",
+    "no": "No",
+    "badge": "NSFW",
+    "blurred": "NSFW content hidden. Click toggle to show.",
+    "ageVerification": "Age Verification Required",
+    "ageVerificationMessage": "This site contains adult content. You must be 18 years or older to enter.",
+    "confirmAge": "I'm 18 or Older - Enter Site",
+    "declineAge": "I'm Under 18 - Exit",
+    "ageVerificationDisclaimer": "By entering, you agree that you are at least 18 years old."
+  },
+  "image": {
+    "prompt": "Prompt",
+    "copyPrompt": "Copy Prompt",
+    "copiedPrompt": "Copied!",
+    "generatedAt": "Generated",
+    "backToGallery": "Back to Gallery",
+    "shareImage": "Share"
+  },
+  "common": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "error": "Error",
+    "loading": "Loading..."
+  }
+}
